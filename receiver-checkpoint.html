@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.1/p5.min.js"></script>
+   <script src="https://unpkg.com/p5.js-svg@1.3.1"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.1/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.1/addons/p5.sound.min.js"></script>
+    <!-- <script src="./path/to/p5.fillGradient.min.js"></script> -->
+    <script src="https://unpkg.com/p5.fillgradient"></script>
+    <!-- <script src="addons/p5.min.js"></script>
+    <script src="addons/p5.rgb.js"></script>
+    <script src="addons/p5.cmyk.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <script src="strings.js" defer></script>
+    <!-- <script src="script.js" defer></script> -->
+    <meta charset="utf-8" />
+
+  </head>
+  <body>
+    <!-- <script src="sketch.js"></script> -->
+     <!-- receiver.html -->
+        <script>
+        let importedLetterStates = [];
+        console.log(importedLetterStates);
+
+        window.addEventListener("message", (event) => {
+            if (event.data.type === "letterData") {
+                importedLetterStates = JSON.parse(event.data.payload);
+                console.log("Received letter states:", importedLetterStates);
+                dataReady = true;
+                redraw();
+            }
+            });
+        </script>
+
+        <script>
+        //let letterFunctions = {}; // assume this is defined
+        let letterWidth = 40;
+        let dataReady = false;
+
+        function setup() {
+        createCanvas(windowWidth, windowHeight, SVG);
+        noLoop(); // static render
+        }
+
+        function draw() {
+            background(255);
+            if (!dataReady) return;
+
+            for (let state of importedLetterStates) {
+                push();
+                translate(state.x, state.y);
+                strokeWeight(state.strokeWeight);
+                stroke(...state.color);
+                noFill();
+                let p = round(state.detail);
+                if (letterFunctions[state.char]) {
+                letterFunctions[state.char](p, letterWidth);
+                } else {
+                console.warn("Missing letter function for:", state.char);
+                }
+                pop();
+            }
+        }
+        </script>
+  </body>
+</html>
