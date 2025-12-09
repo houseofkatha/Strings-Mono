@@ -331,12 +331,16 @@ function draw() {
     secondSpec.classList.remove('hide');
     arrow.classList.remove('hide');
     radiusInput.classList.remove('hide');
-    document.getElementById('hid-colour-2').classList.remove('hide');
+    document.getElementById('second-spec').classList.remove('hide');
+    // document.querySelector('.spec-all').style.alignItems = "normal";
+    document.getElementById('hid-colour-1').style.justifyContent = "space-between";
   } else {
     secondSpec.classList.add('hide');
     arrow.classList.add('hide');
     radiusInput.classList.add('hide');
-    document.getElementById('hid-colour-2').classList.add('hide');
+    document.getElementById('second-spec').classList.add('hide');
+    // document.querySelector('.spec-all').style.alignItems = "normal";
+    document.getElementById('hid-colour-1').style.justifyContent = "center";
   }
 
   drawCustomText(text1, 30, 40, {
