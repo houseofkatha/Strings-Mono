@@ -10,9 +10,9 @@ html, body {
     font-size: 14px;
 }
 
-/* canvas {
-    padding: 48px;
-} */
+canvas {
+    margin-top: 48px;
+}
 
 .master-flex {
     display: flex;
@@ -98,6 +98,59 @@ label {
   pointer-events: auto;
   transform: scale(1);
 } */
+
+header {
+  display: grid;
+  /* flex-direction: row;
+  justify-content: space-between; */
+  grid-template-columns: 50% 50%;
+  padding: 28px;
+  padding-bottom: 0px;
+  position: absolute;
+  width: 100%;
+}
+
+#wordmark {
+  width: 100px;
+  margin: 0;
+  padding: 10px 6px;
+  align-self: center;
+}
+
+#info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 10px;
+}
+
+#info-button {
+  width: fit-content;
+  padding: 0px;
+  padding: 12px 12px 10px;
+  background-color: #fff;
+  border: none;
+}
+
+#info-button:hover {
+  background-color: #eeeeee;
+  
+}
+
+#info-icon {
+  width: 15px;
+}
+
+#info-text {
+  width: 250px;
+  font-family: 'Inter', serif;
+  font-size: 14px;
+  line-height: 19px;
+  padding: 18px 18px;
+  border-radius: 5px;
+  background-color: #fff;
+  filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.1));
+}
 
 .settings-panel {
   position: absolute;
@@ -242,16 +295,35 @@ input[type="number"] {
   filter: drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.15));
 }
 
-.spec-all {
+.spec-and-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   bottom: 4rem;
+}
+
+.spec-all {
+  /* position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 4rem; */
 
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: last baseline;
   gap: 1rem;
+  height: fit-content;
+}
+
+.spec-w-hidden-colour {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
 }
 
 .spec-container {
@@ -260,6 +332,7 @@ input[type="number"] {
   align-items: center;
   justify-content: end;
   gap: 0.75rem;
+  background-color: #fff;
 }
 
 .spec-name {
@@ -359,15 +432,119 @@ input[type="number"] {
 .colour-box {
   width: 70px;
   height: 32px;
-  background-color: #F9632D;
+  /* background-color: #F9632D; */
   border-radius: 4px;
 }
 
+#colour1 {
+  background-image: linear-gradient(to right, #ffbb00, #de176c);
+}
+
+#colour2 {
+  background-image: linear-gradient(to right, #ffbb00, #de176c);
+}
+
+.colour-popup {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  border-radius: 6px;
+  background-color: #ffffff;
+  width: auto;
+  height: auto;
+  filter: drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.15));
+}
+
+.colour-option {
+  width: 70px;
+  height: 32px;
+  margin: 6px;
+  border-radius: 4px;
+  
+  background-color: #333
+}
+
+.colour-option.focused {
+  border: 2px solid #F9632D;
+}
+
+#col1, #col5 {
+  /* background-color: #209ddb; */
+  background-image: linear-gradient(to right, #ffbb00, #de176c);
+}
+
+#col2, #col6 {
+  /* background-color: #e72c2c; */
+  background-image: linear-gradient(to right, #f46e01, #8c3bf4);
+}
+
+#col3, #col7 {
+  /* background-color: #ff4d0c; */
+  background-image: linear-gradient(to right, #222b00, #a9d400);
+}
+
+#col4, #col8 {
+  /* background-color: #de24cb; */
+  background-image: linear-gradient(to right, #414d0b, #727a17);
+}
+
 #text-input {
-  position: absolute;
+  /* position: absolute;
   bottom: 18%;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 50%; */
+  /* transform: translateX(-50%); */
   text-transform: uppercase;
   width: 300px;
+  z-index: 1;
+}
+
+.colour-box.focused {
+    border-color: #2a2a2a; /* Focus/active border */
+}
+
+/* Individual Swatches within the Colour Box */
+.colour-box .swatch-1,
+.colour-box .swatch-2 {
+    width: 50%;
+    height: 100%;
+}
+
+.colour-box .swatch-1 {
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* Palette Popup Styling */
+.palette-popup {
+    position: absolute;
+    top: 40px; /* Position it below the colour-box */
+    left: 0;
+    width: 150px; /* Width for the palette grid */
+    padding: 5px;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Ensure it's above other elements */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 swatches per row */
+    gap: 5px;
+}
+
+/* Individual Gradient Swatch in the Palette */
+.palette-swatch {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #eee;
+    cursor: pointer;
+    display: flex;
+    transition: transform 0.1s;
+}
+
+.palette-swatch:hover {
+    transform: scale(1.05);
+    border-color: #333;
+}
+
+.palette-swatch-start,
+.palette-swatch-end {
+    width: 50%;
+    height: 100%;
 }

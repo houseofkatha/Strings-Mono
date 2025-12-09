@@ -8,6 +8,7 @@ let charWidth;
 let n=10;
 let constTargetCol;
 
+
 function drawCustomText(str, x, y, options = {}) {
   let {
     letterWidth = 10,
@@ -302,7 +303,7 @@ class Quadrilateral {
 
 function keyPressed() {
   document.addEventListener('keydown', function(event) {
-    if ((event.key === 's' || event.key === 'S') && (event.metaKey || event.ctrlKey)) {
+    if ((event.key === 's' || event.key === 'S')) {
       event.preventDefault(); // prevent browser save dialog
       // Start recording
       recordingStates = true;

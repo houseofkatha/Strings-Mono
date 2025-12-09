@@ -12,6 +12,13 @@ let record = false;
 
 let time = 0;
 
+let baseCol = [255, 187, 0];
+let tarCol = [222, 23, 108];
+let intBaseCol = [255, 187, 0];
+let intTarCol = [222, 23, 108];
+
+const infoButton = document.getElementById('info-button');
+const infoText = document.getElementById('info-text');
 const widthNumberInput = document.getElementById('width');
 const widthRangeSlider = document.getElementById('width-slider');
 const letterNumberInput = document.getElementById('letter-spacing');
@@ -19,7 +26,13 @@ const letterRangeSlider = document.getElementById('letter-slider');
 const lineNumberInput = document.getElementById('line-spacing');
 const lineRangeSlider = document.getElementById('line-slider');
 
-
+infoButton.addEventListener('click', () => {
+  if(infoText.classList.contains('hide')) {
+    infoText.classList.remove('hide');
+  } else {
+    infoText.classList.add('hide');
+  }
+});
 
 
   // When slider changes, update number input
@@ -103,6 +116,8 @@ let secDetail = document.getElementById('detail2');
 const secondSpec = document.getElementById('second-spec');
 const arrow = document.getElementById('arrow');
 let radiusInput = document.getElementById('radius');
+let col1 = document.getElementById('colour1'); 
+let col2 = document.getElementById('colour2'); 
 
 document.getElementById('label').innerText = "\u00A0"; // non-breaking space
 document.getElementById('label2').innerText = "\u00A0"; // non-breaking space
@@ -138,6 +153,142 @@ secDetail.addEventListener('focus', () => {
 secDetail.addEventListener('blur', () => {
     document.getElementById('label2').innerText = "\u00A0";
   });
+
+col1.addEventListener('click', () => {
+    document.getElementById('colour-options-1').classList.toggle('hide');
+});
+
+col2.addEventListener('click', () => {
+    document.getElementById('colour-options-2').classList.toggle('hide');
+});
+
+document.getElementById('col1').addEventListener('click', () => {
+    baseCol = [255, 187, 0];
+    tarCol = [222, 23, 108];
+
+    document.getElementById('col1').classList.add('focused');
+    document.getElementById('col2').classList.remove('focused');
+    document.getElementById('col3').classList.remove('focused');
+    // document.getElementById('col4').classList.remove('focused');
+    document.getElementById('col5').classList.remove('focused');
+    document.getElementById('col6').classList.remove('focused');
+    document.getElementById('col7').classList.remove('focused');
+    // document.getElementById('col8').classList.remove('focused');
+
+    document.getElementById('colour1').style.backgroundImage = 'linear-gradient(to right, #ffbb00, #de176c)';
+});
+
+document.getElementById('col2').addEventListener('click', () => {
+    baseCol = [244, 110, 1];
+    tarCol = [140, 59, 244];
+
+    document.getElementById('col1').classList.remove('focused');
+    document.getElementById('col2').classList.add('focused');
+    document.getElementById('col3').classList.remove('focused');
+    // document.getElementById('col4').classList.remove('focused');
+    document.getElementById('col5').classList.remove('focused');
+    document.getElementById('col6').classList.remove('focused');
+    document.getElementById('col7').classList.remove('focused');
+    // document.getElementById('col8').classList.remove('focused');
+
+    document.getElementById('colour1').style.backgroundImage = 'linear-gradient(to right, #f46e01, #8c3bf4)';
+});
+
+document.getElementById('col3').addEventListener('click', () => {
+    baseCol = [34, 43, 0];
+    tarCol = [169, 212, 0];
+
+    document.getElementById('col1').classList.remove('focused');
+    document.getElementById('col2').classList.remove('focused');
+    document.getElementById('col3').classList.add('focused');
+    // document.getElementById('col4').classList.remove('focused');
+    document.getElementById('col5').classList.remove('focused');
+    document.getElementById('col6').classList.remove('focused');
+    document.getElementById('col7').classList.remove('focused');
+    // document.getElementById('col8').classList.remove('focused');
+
+    document.getElementById('colour1').style.backgroundImage = 'linear-gradient(to right, #222b00, #a9d400)';
+});
+
+// document.getElementById('col4').addEventListener('click', () => {
+//     baseCol = [65, 77, 11];
+//     tarCol = [114, 122, 23];
+
+//     document.getElementById('col1').classList.remove('focused');
+//     document.getElementById('col2').classList.remove('focused');
+//     document.getElementById('col3').classList.remove('focused');
+//     document.getElementById('col4').classList.add('focused');
+//     document.getElementById('col5').classList.remove('focused');
+//     document.getElementById('col6').classList.remove('focused');
+//     document.getElementById('col7').classList.remove('focused');
+//     document.getElementById('col8').classList.remove('focused');
+
+//     document.getElementById('colour1').style.backgroundImage = 'linear-gradient(to right, #414d0b, #727a17)';
+// });
+
+document.getElementById('col5').addEventListener('click', () => {
+    intBaseCol = [255, 187, 0];
+    intTarCol = [222, 23, 108];
+
+    document.getElementById('col1').classList.remove('focused');
+    document.getElementById('col2').classList.remove('focused');
+    document.getElementById('col3').classList.remove('focused');
+    // document.getElementById('col4').classList.remove('focused');
+    document.getElementById('col5').classList.add('focused');
+    document.getElementById('col6').classList.remove('focused');
+    document.getElementById('col7').classList.remove('focused');
+    // document.getElementById('col8').classList.remove('focused');
+
+    document.getElementById('colour2').style.backgroundImage = 'linear-gradient(to right, #ffbb00, #de176c)';
+});
+
+document.getElementById('col6').addEventListener('click', () => {
+    intBaseCol = [244, 110, 1];
+    intTarCol = [140, 59, 244];
+
+    document.getElementById('col1').classList.remove('focused');
+    document.getElementById('col2').classList.remove('focused');
+    document.getElementById('col3').classList.remove('focused');
+    // document.getElementById('col4').classList.remove('focused');
+    document.getElementById('col5').classList.remove('focused');
+    document.getElementById('col6').classList.add('focused');
+    document.getElementById('col7').classList.remove('focused');
+    // document.getElementById('col8').classList.remove('focused');
+
+    document.getElementById('colour2').style.backgroundImage = 'linear-gradient(to right, #f46e01, #8c3bf4)';
+});
+
+document.getElementById('col7').addEventListener('click', () => {
+    intBaseCol = [34, 43, 0];
+    intTarCol = [169, 212, 0];
+
+    document.getElementById('col1').classList.remove('focused');
+    document.getElementById('col2').classList.remove('focused');
+    document.getElementById('col3').classList.remove('focused');
+    // document.getElementById('col4').classList.remove('focused');
+    document.getElementById('col5').classList.remove('focused');
+    document.getElementById('col6').classList.remove('focused');
+    document.getElementById('col7').classList.add('focused');
+    // document.getElementById('col8').classList.remove('focused');
+
+    document.getElementById('colour2').style.backgroundImage = 'linear-gradient(to right, #222b00, #a9d400)';
+});
+
+// document.getElementById('col8').addEventListener('click', () => {
+//     intBaseCol = [65, 77, 11];
+//     intTarCol = [114, 122, 23];
+
+//     document.getElementById('col1').classList.remove('focused');
+//     document.getElementById('col2').classList.remove('focused');
+//     document.getElementById('col3').classList.remove('focused');
+//     document.getElementById('col4').classList.remove('focused');
+//     document.getElementById('col5').classList.remove('focused');
+//     document.getElementById('col6').classList.remove('focused');
+//     document.getElementById('col7').classList.remove('focused');
+//     document.getElementById('col8').classList.add('focused');
+
+//     document.getElementById('colour1').style.backgroundImage = 'linear-gradient(to right, #414d0b, #727a17)';
+// });
 
 
 function setup() {
@@ -180,10 +331,12 @@ function draw() {
     secondSpec.classList.remove('hide');
     arrow.classList.remove('hide');
     radiusInput.classList.remove('hide');
+    document.getElementById('hid-colour-2').classList.remove('hide');
   } else {
     secondSpec.classList.add('hide');
     arrow.classList.add('hide');
     radiusInput.classList.add('hide');
+    document.getElementById('hid-colour-2').classList.add('hide');
   }
 
   drawCustomText(text1, 30, 40, {
@@ -199,11 +352,11 @@ function draw() {
     radius: affectRadius,
     interactiveStrokeWeight: weight2,
     interactiveDetailLevel: detLevel2,
-    interactiveColor: [270, 3, 24],
-    baseColor: [69, 111, 232],
-    targetColor: [25, 176, 236],
-    interactiveBaseColor: [69, 111, 232],
-    interactiveTargetColor: [25, 176, 236]
+    //interactiveColor: [270, 3, 24],
+    baseColor: baseCol,
+    targetColor: tarCol,
+    interactiveBaseColor: intBaseCol,
+    interactiveTargetColor: intTarCol
   });
 
 //   if(record) {
